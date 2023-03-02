@@ -2,6 +2,7 @@ package com.tencent.wxcloudrun.controller;
 
 import com.tencent.wxcloudrun.config.ApiResponse;
 import com.tencent.wxcloudrun.dto.LoginRequest;
+import com.tencent.wxcloudrun.dto.RegisterRequest;
 import com.tencent.wxcloudrun.model.Account;
 import com.tencent.wxcloudrun.service.AccountService;
 import org.slf4j.Logger;
@@ -26,6 +27,12 @@ public class AccountController {
         this.accountService = accountService;
         this.logger = LoggerFactory.getLogger(AccountController.class);
     }
+
+    /**
+     * 登录
+     * @param login 登陆参数
+     * @return 响应
+     */
     @PostMapping("/login")
     ApiResponse login(LoginRequest login){
         System.out.println("当前正在尝试登录的用户:"+login);
@@ -36,6 +43,20 @@ public class AccountController {
             return ApiResponse.ok("登陆成功",account.getAccount());
         } catch (Exception e) {
             return ApiResponse.error("登陆失败");
+        }
+
+    }
+
+    @PostMapping("/register")
+    ApiResponse register(RegisterRequest register){
+        System.out.println("当前:"+register.getAccount()+"-->用户正在尝试注册");
+        try {
+            boolean regStatus = accountService.register(register);
+            logger.info("注册状态:regStatus:{}",regStatus);
+            return ApiResponse.ok("注册成功",register.getAccount());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ApiResponse.error("注册失败");
         }
 
     }

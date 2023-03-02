@@ -2,6 +2,7 @@ package com.tencent.wxcloudrun.service.impl;
 
 import com.tencent.wxcloudrun.dao.AccountMapper;
 import com.tencent.wxcloudrun.dto.LoginRequest;
+import com.tencent.wxcloudrun.dto.RegisterRequest;
 import com.tencent.wxcloudrun.model.Account;
 import com.tencent.wxcloudrun.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,5 +23,10 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public Account login(LoginRequest login) {
         return accountMapper.login(login);
+    }
+
+    @Override
+    public boolean register(RegisterRequest register) {
+        return accountMapper.register(register);
     }
 }

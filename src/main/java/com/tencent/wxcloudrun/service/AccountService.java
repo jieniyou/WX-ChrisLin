@@ -1,6 +1,7 @@
 package com.tencent.wxcloudrun.service;
 
 import com.tencent.wxcloudrun.dto.LoginRequest;
+import com.tencent.wxcloudrun.dto.RegisterRequest;
 import com.tencent.wxcloudrun.model.Account;
 
 /**
@@ -11,5 +12,6 @@ import com.tencent.wxcloudrun.model.Account;
  */
 public interface AccountService {
     Account login(LoginRequest login);
+    boolean register(RegisterRequest register);
 
 }

@@ -1,6 +1,7 @@
 package com.tencent.wxcloudrun.dao;
 
 import com.tencent.wxcloudrun.dto.LoginRequest;
+import com.tencent.wxcloudrun.dto.RegisterRequest;
 import com.tencent.wxcloudrun.model.Account;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -13,4 +14,5 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface AccountMapper {
     Account login(LoginRequest login);
+    boolean register(RegisterRequest register);
 }

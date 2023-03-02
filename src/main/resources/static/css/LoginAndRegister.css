@@ -1,0 +1,52 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+h1{
+    text-align: center;
+}
+a{
+    text-decoration: none;
+    color: #07c160;
+}
+a:link{
+    text-decoration: none;
+}
+a:visited{
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: none;
+}
+a:active{
+    text-decoration: none;
+}
+form{
+    position: absolute;
+    width: 30%;
+    top: 15%;
+    left: 35%;
+    padding: 15px;
+    border: 1px rebeccapurple solid;
+    border-radius: 25px;
+}
+form *{
+    margin-top: 15px;
+}
+form input:not(.btn){
+    width: 50%;
+    height: 30px;
+    border: #07c160 1px solid;
+    border-radius: 15px;
+    text-indent: 20px;
+}
+.btn{
+    position: relative;
+    width: 50%;
+    height: 30px;
+    margin-left: 52px;
+    border: #07c160 1px solid;
+    border-radius: 15px;
+    background-color: #07c160;
+    color: #FFFFFF;
+}
