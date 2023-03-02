@@ -1,0 +1,28 @@
+server:
+  port: 80
+
+MYSQL_ADDRESS: sh-cynosdbmysql-grp-1snr76gk.sql.tencentcdb.com:23875
+MYSQL_DATABASE: springboot_demo
+MYSQL_USERNAME: root
+MySQL_PASSWORD: 1314520LinMin
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://${MYSQL_ADDRESS}/${MYSQL_DATABASE:springboot_demo}
+#    username: ${MYSQL_USERNAME}
+#    password: ${MySQL_PASSWORD}
+    url: jdbc:mysql://${MYSQL_ADDRESS}/${MYSQL_DATABASE:springboot_demo}
+    username: ${MYSQL_USERNAME}
+    password: ${MySQL_PASSWORD}
+  mvc:
+    view:
+      suffix: .html
+      prefix: /
+
+mybatis:
+  configuration:
+#    下划线转驼峰
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath*:mapper/*Mapper.xml
+
