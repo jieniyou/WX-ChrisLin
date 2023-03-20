@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tencent.wxcloudrun.mapper.AccountMapper">
+    <select id="login" parameterType="com.tencent.wxcloudrun.request.LoginRequest" resultType="com.tencent.wxcloudrun.request.LoginRequest">
+        select * from account
+        <where>
+            user_name=#{userName} and user_password=#{userPassword}
+        </where>
+;
+    </select>
+    <insert id="register" parameterType="com.tencent.wxcloudrun.request.RegisterRequest">
+        insert into account (id, user_name, user_password, user_nick_name, user_email, user_phone)
+        values (#{id},#{userName},#{userPassword},#{userNickName},#{userEmail},#{userPhone});
+    </insert>
+    <select id="queryUserByUserName" parameterType="java.lang.String" resultType="com.tencent.wxcloudrun.request.LoginRequest">
+        select * from account
+        <where>
+            user_name=#{userName}
+        </where>
+        ;
+    </select>
+
+</mapper>
