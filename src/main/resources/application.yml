@@ -2,7 +2,7 @@ server:
   port: 80
 
 MYSQL_ADDRESS: sh-cynosdbmysql-grp-1snr76gk.sql.tencentcdb.com:23875
-MYSQL_DATABASE: springboot_demo
+MYSQL_DATABASE: ChrisLin
 MYSQL_USERNAME: root
 MySQL_PASSWORD: 1314520LinMin
 
@@ -12,13 +12,13 @@ spring:
 #    url: jdbc:mysql://${MYSQL_ADDRESS}/${MYSQL_DATABASE:springboot_demo}
 #    username: ${MYSQL_USERNAME}
 #    password: ${MySQL_PASSWORD}
-    url: jdbc:mysql://${MYSQL_ADDRESS}/${MYSQL_DATABASE:springboot_demo}
+    url: jdbc:mysql://${MYSQL_ADDRESS}/${MYSQL_DATABASE}
     username: ${MYSQL_USERNAME}
     password: ${MySQL_PASSWORD}
-  mvc:
-    view:
-      suffix: .html
-      prefix: /
+#  mvc:
+#    view:
+#      suffix: .html
+#      prefix: /
 
 mybatis:
   configuration:
