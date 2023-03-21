@@ -20,13 +20,15 @@ public class RegisterRequest {
     private String userName;
     private String userPassword;
     private String userNickName;
+    private String userAvatar;
     private String userEmail;
     private String userPhone;
 
-    public RegisterRequest(String userName, String userPassword, String userNickName, String userEmail, String userPhone) {
+    public RegisterRequest(String userName, String userPassword, String userNickName,String userAvatar, String userEmail, String userPhone) {
         this.userName = userName;
         this.userPassword = userPassword;
         this.userNickName = userNickName;
+        this.userAvatar = userAvatar;
         this.userEmail = userEmail;
         this.userPhone = userPhone;
     }
