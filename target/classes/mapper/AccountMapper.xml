@@ -11,8 +11,8 @@
 ;
     </select>
     <insert id="register" parameterType="com.tencent.wxcloudrun.request.RegisterRequest">
-        insert into account (id, user_name, user_password, user_nick_name, user_email, user_phone)
-        values (#{id},#{userName},#{userPassword},#{userNickName},#{userEmail},#{userPhone});
+        insert into account (id, user_name, user_password, user_nick_name,user_avatar, user_email, user_phone)
+        values (#{id},#{userName},#{userPassword},#{userNickName},#{userAvatar},#{userEmail},#{userPhone});
     </insert>
     <select id="queryUserByUserName" parameterType="java.lang.String" resultType="com.tencent.wxcloudrun.request.LoginRequest">
         select * from account
