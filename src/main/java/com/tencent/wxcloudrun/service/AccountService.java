@@ -2,6 +2,7 @@ package com.tencent.wxcloudrun.service;
 
 import com.tencent.wxcloudrun.request.LoginRequest;
 import com.tencent.wxcloudrun.request.RegisterRequest;
+import com.tencent.wxcloudrun.response.LoginResponse;
 
 /**
  * @Author: 解你忧
@@ -11,6 +12,6 @@ import com.tencent.wxcloudrun.request.RegisterRequest;
  */
 
 public interface AccountService {
-    LoginRequest login(LoginRequest loginRequest);
+    LoginResponse login(LoginRequest loginRequest);
     boolean register(RegisterRequest registerRequest);
 }

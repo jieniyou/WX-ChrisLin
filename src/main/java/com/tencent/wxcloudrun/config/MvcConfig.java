@@ -12,7 +12,7 @@ import javax.annotation.Resource;
  * @Date_Time: 2023/3/20 20:55
  */
 @Configuration
-public class MvcConfig implements WebMvcConfigurer {
+public class MvcConfig implements WebMvcConfigurer  {
     @Resource
     TokenInterceptor tokenInterceptor;
 
@@ -29,8 +29,9 @@ public class MvcConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowedOrigins("*")
-                .allowedMethods("*")
-                .allowedHeaders("token")
+                .allowedMethods(new String[]{"GET","POST","PUT","DELETE"})
+                .allowedHeaders("*")
+                .exposedHeaders("*")
                 .maxAge(3600);
     }
 }

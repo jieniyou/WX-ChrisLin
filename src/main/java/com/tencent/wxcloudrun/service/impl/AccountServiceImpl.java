@@ -3,6 +3,7 @@ package com.tencent.wxcloudrun.service.impl;
 import com.tencent.wxcloudrun.mapper.AccountMapper;
 import com.tencent.wxcloudrun.request.LoginRequest;
 import com.tencent.wxcloudrun.request.RegisterRequest;
+import com.tencent.wxcloudrun.response.LoginResponse;
 import com.tencent.wxcloudrun.service.AccountService;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
@@ -20,8 +21,8 @@ public class AccountServiceImpl implements AccountService {
     @Resource
     private AccountMapper accountMapper;
     @Override
-    public LoginRequest login(LoginRequest loginRequest) {
-        LoginRequest login = accountMapper.login(loginRequest);
+    public LoginResponse login(LoginRequest loginRequest) {
+        LoginResponse login = accountMapper.login(loginRequest);
         return login;
     }
 

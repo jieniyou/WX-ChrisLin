@@ -1,8 +1,10 @@
 package com.tencent.wxcloudrun.controller;
 
 import com.tencent.wxcloudrun.config.Result;
+import com.tencent.wxcloudrun.entity.Account;
 import com.tencent.wxcloudrun.request.LoginRequest;
 import com.tencent.wxcloudrun.request.RegisterRequest;
+import com.tencent.wxcloudrun.response.LoginResponse;
 import com.tencent.wxcloudrun.service.AccountService;
 import com.tencent.wxcloudrun.utils.JwtUtil;
 import org.springframework.util.ObjectUtils;
@@ -27,10 +29,15 @@ public class AccountController {
 
     @PostMapping("login")
     public Result login(@RequestBody LoginRequest loginRequest){
-        LoginRequest login= accountService.login(loginRequest);
+        LoginResponse login= accountService.login(loginRequest);
         if (!ObjectUtils.isEmpty(login)){
             String token = JwtUtil.sign(login.getUserName());
-            return Result.success("登陆成功",token);
+            Account account = new Account(
+                    login.getId(), login.getUserName(),
+                    null, login.getUserNickName(),
+                    login.getUserAvatar(), login.getUserEmail(),
+                    login.getUserPhone());
+            return Result.success(token,account);
         }else {
             return Result.fail("账号或密码错误",null);
         }
