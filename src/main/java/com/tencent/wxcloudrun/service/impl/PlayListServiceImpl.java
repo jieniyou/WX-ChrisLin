@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * @Author: 解你忧
@@ -35,7 +36,8 @@ public class PlayListServiceImpl implements PlayListService {
     HttpGet get;
     HttpResponse res;
     @Override
-    public JSONObject queryPlayListByUserId(int offset, int limit, String uid) {
+    public JSONObject queryPlayListByUserId(int offset, int limit, Long userId) {
+        Long uid = playListMapper.queryNetEaseIdByUserId(userId);
         String url = "http://music.163.com/api/user/playlist?offset="+offset+"&limit="+limit+"&uid="+uid;
         get=new HttpGet(url);
         try {
@@ -57,6 +59,7 @@ public class PlayListServiceImpl implements PlayListService {
         return jsonObject;
 
     }
+
     private void saveQueryPlayList(JSONObject jsonObject){
         JSONArray playlists = jsonObject.getJSONArray("playlist");
         for (Object playlist : playlists) {
@@ -69,5 +72,10 @@ public class PlayListServiceImpl implements PlayListService {
             playList=new PlayList(id,userId,coverImgUrl,name,description);
             playListMapper.saveQueryPlayList(playList);
         }
+    }
+
+    @Override
+    public List<PlayList> queryPlayList() {
+        return playListMapper.queryPlayList();
     }
 }

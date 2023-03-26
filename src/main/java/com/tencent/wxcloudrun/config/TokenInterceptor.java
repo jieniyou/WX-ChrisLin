@@ -21,7 +21,8 @@ public class TokenInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         response.setCharacterEncoding("utf-8");
         request.setCharacterEncoding("utf-8");
-        String token = request.getHeader("token");
+        String token = request.getHeader("Authorization");
+        System.err.println("token===>"+token);
         //token通过验证返回为true继续访问
         if (!(ObjectUtils.isEmpty(token))||token!=null){
             boolean result= JwtUtil.verify(token);

@@ -19,9 +19,9 @@ public class MvcConfig implements WebMvcConfigurer  {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         InterceptorRegistration patterns=registry.addInterceptor(tokenInterceptor)
+                .addPathPatterns("/**")//指定拦截的url地址
                 .excludePathPatterns("/user/**")
                 .excludePathPatterns("/music/**")
-                .addPathPatterns("/**")//指定拦截的url地址
                ;
     }
 

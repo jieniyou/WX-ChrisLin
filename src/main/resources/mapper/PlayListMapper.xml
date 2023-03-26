@@ -10,5 +10,11 @@
         VALUE (#{id},#{uid},#{playlistCoverImg},#{playlistName},#{playlistDescription})
         on duplicate key update id=#{id}
     </insert>
+    <select id="queryPlayList" resultType="com.tencent.wxcloudrun.entity.PlayList">
+        SELECT * FROM playlist;
+    </select>
+    <select id="queryNetEaseIdByUserId" parameterType="java.lang.Long" resultType="java.lang.Long">
+        select netease_id from acc_net where account_id=#{userId};
+    </select>
 
 </mapper>
