@@ -33,10 +33,11 @@ public class TokenInterceptor implements HandlerInterceptor {
         if(ObjectUtils.isEmpty(token)||token==null||token==""){
             Result result=Result.fail(401,"You are not logged in",null);
             response.getWriter().write(JSONObject.toJSONString(result));
+        }else{
+            //token验证不通过 返回失败提示
+            Result result=Result.fail(403,"Your token has expired",null);
+            response.getWriter().write(JSONObject.toJSONString(result));
         }
-        //token验证不通过 返回失败提示
-        Result result=Result.fail(403,"Your token has expired",null);
-        response.getWriter().write(JSONObject.toJSONString(result));
         return false;
     }
 }

@@ -16,15 +16,21 @@ public class MvcConfig implements WebMvcConfigurer  {
     @Resource
     TokenInterceptor tokenInterceptor;
 
+    /**
+     * 拦截器配置
+     * @param registry
+     */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        InterceptorRegistration patterns=registry.addInterceptor(tokenInterceptor)
-                .addPathPatterns("/**")//指定拦截的url地址
-                .excludePathPatterns("/user/**")
-                .excludePathPatterns("/music/**")
-               ;
+        InterceptorRegistration patterns=registry.addInterceptor(tokenInterceptor);
+        patterns.excludePathPatterns("/*","/static/**","/user/**","/music/**")
+                .addPathPatterns("/**");
     }
 
+    /**
+     * 跨域配置
+     * @param registry
+     */
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
